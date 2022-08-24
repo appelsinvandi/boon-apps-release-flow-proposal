@@ -1,5 +1,5 @@
 {
-  "name": "test-changelets-release-branches",
+  "name": "boon-apps-release-flow-proposal",
   "packageManager": "yarn@3.2.2",
   "workspaces": [
     "apps/*",

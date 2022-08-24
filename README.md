@@ -1,4 +1,4 @@
-# Release Flow
+# Boon apps release flow proposal
 
 This repo is intended to demo a potential release flow, where most actions is automated based on git state.
 
