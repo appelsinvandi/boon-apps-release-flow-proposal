@@ -7,7 +7,7 @@ This repo is intended to demo a potential release flow, where most actions is au
 These are the prioritized aims of the flow.
 
 1. **Convenient** - Any addition must be a net win in productivity, at the very least removing as much hassle as it adds.
-2. **Automatic** - If an action _can be_ automatic, it _should be_.
+2. **Automatic** - If an action _can be_ automatic, it _should be_ automatic.
 3. **Legacy Support** - It should be easy and fast to support legacy major & minor versions of _all_ apps.
 4. **Transparent** - Ideally, the flow would also take care of keeping changelogs and posting on Slack, to let the team know what's moving.
 
