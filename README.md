@@ -226,7 +226,7 @@ gitGraph
   commit id:"feat: g"
 ```
 
-\_Note: It seems github doesn't support this mermaid feature at this time. [Click here for a visual representation of the diagram, of the above fails to render](https://mermaid.ink/svg/pako:eNqlk01OwzAQha9izQqkUhovvQZxAHbIm4k9SazGcTS1pVZV745TtaCUhqaw8_g9z8838h5MsAQKahffGPtGd0KYhsw6pCg8uu54Ebx3UTirNFSEUQnUcF0oB-FqkpKxM41gagk39Fwsi-VWBLbESqwuk5kmMOVsyffiYbCuHjWIiHXWjuFkmZ8tmXletz2NNbKO2j0pzLun3pn15cMbIxTjEYo7RrBTuGk-bvmNu7jRqxzjlnNxDyTKvyIsZyCUY4Tyl1ryf7XkeF3yrnVVU-uqNcACPHF-a_Ov2w82DbEhnzep8tFShamNQ4JDtqbeYqRX62JgUBW2G1oAphjed50BFTnR2fTisGb0X64eu48QzvHhExC8Rks)
+_Note: It seems github doesn't support this mermaid feature at this time. [Click here for a visual representation of the diagram, of the above fails to render](https://mermaid.ink/svg/pako:eNqlk01OwzAQha9izQqkUhovvQZxAHbIm4k9SazGcTS1pVZV745TtaCUhqaw8_g9z8838h5MsAQKahffGPtGd0KYhsw6pCg8uu54Ebx3UTirNFSEUQnUcF0oB-FqkpKxM41gagk39Fwsi-VWBLbESqwuk5kmMOVsyffiYbCuHjWIiHXWjuFkmZ8tmXletz2NNbKO2j0pzLun3pn15cMbIxTjEYo7RrBTuGk-bvmNu7jRqxzjlnNxDyTKvyIsZyCUY4Tyl1ryf7XkeF3yrnVVU-uqNcACPHF-a_Ov2w82DbEhnzep8tFShamNQ4JDtqbeYqRX62JgUBW2G1oAphjed50BFTnR2fTisGb0X64eu48QzvHhExC8Rks)_
 
 The most immediate difference is that the `fix/` branches are missing. Consider that the merging would usually occur through squash, as such in the earlier cases the `fix/` branches should now be considered a permanently visible part of the history.
 
