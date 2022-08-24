@@ -1,0 +1,7 @@
+{
+  "name": "group-coaching-expo",
+  "version": "1.0.0",
+  "dependencies": {
+    "@lib/b": "workspace:*"
+  }
+}

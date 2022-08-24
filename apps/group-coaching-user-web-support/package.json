@@ -1,0 +1,8 @@
+{
+  "name": "group-coaching-user-web-support",
+  "version": "1.0.0",
+  "dependencies": {
+    "@lib/a": "workspace:*",
+    "@lib/c": "workspace:*"
+  }
+}
