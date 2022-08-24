@@ -22,15 +22,15 @@ Let's begin by visualizing a simple release.
 ```mermaid
 gitGraph
   checkout main
-  commit id: "feat: a"
-  commit id: "feat: b"
+  commit id:"feat: a"
+  commit id:"feat: b"
 
   checkout main
   branch release/1.1.x order: 0
-  commit id: "chore: bump (1.1.0)" tag: "group-coaching-app@1.1.0"
+  commit id:"chore: bump (1.1.0)" tag:"group-coaching-app@1.1.0"
 
   checkout main
-  commit id: "feat: c"
+  commit id:"feat: c"
 ```
 
 In the above example, we see features being pushed to the `main` branch, and when the feature-set is ripe for release, the `release/1.1.x` branch is made for the release to live in.
@@ -44,15 +44,15 @@ Building upon the previous visualization we might get something like this:
 ```mermaid
 gitGraph
   checkout main
-  commit id: "feat: a"
-  commit id: "feat: b"
+  commit id:"feat: a"
+  commit id:"feat: b"
 
   checkout main
   branch release/1.1.x order: 0
-  commit id: "chore: bump (1.1.0)" tag: "group-coaching-app@1.1.0"
+  commit id:"chore: bump (1.1.0)" tag:"group-coaching-app@1.1.0"
 
   checkout main
-  commit id: "feat: c"
+  commit id:"feat: c"
 
   checkout release/1.1.x
   branch fix/some-bug-a order: 11
@@ -60,13 +60,13 @@ gitGraph
 
   checkout release/1.1.x
   merge fix/some-bug-a
-  commit id: "chore: bump (1.1.1)" tag: "group-coaching-app@1.1.1"
+  commit id:"chore: bump (1.1.1)" tag:"group-coaching-app@1.1.1"
 
   checkout main
   merge fix/some-bug-a
 
   checkout main
-  commit id: "feat: d"
+  commit id:"feat: d"
 ```
 
 A `fix/` branch is created for the bug on the _lowest supported version where the bug exists_.
@@ -84,15 +84,15 @@ This is handled in a very similar manner to how `1.1.x` were released.
 ```mermaid
 gitGraph
   checkout main
-  commit id: "feat: a"
-  commit id: "feat: b"
+  commit id:"feat: a"
+  commit id:"feat: b"
 
   checkout main
   branch release/1.1.x order: 0
-  commit id: "chore: bump (1.1.0)" tag: "group-coaching-app@1.1.0"
+  commit id:"chore: bump (1.1.0)" tag:"group-coaching-app@1.1.0"
 
   checkout main
-  commit id: "feat: c"
+  commit id:"feat: c"
 
   checkout release/1.1.x
   branch fix/some-bug-a order: 11
@@ -100,18 +100,18 @@ gitGraph
 
   checkout release/1.1.x
   merge fix/some-bug-a
-  commit id: "chore: bump (1.1.1)" tag: "group-coaching-app@1.1.1"
+  commit id:"chore: bump (1.1.1)" tag:"group-coaching-app@1.1.1"
 
   checkout main
   merge fix/some-bug-a
 
   checkout main
-  commit id: "feat: d"
-  commit id: "feat: e"
+  commit id:"feat: d"
+  commit id:"feat: e"
 
   checkout main
   branch release/1.2.x order: 1
-  commit id: "chore: bump (1.2.0)" tag: "group-coaching-app@1.2.0"
+  commit id:"chore: bump (1.2.0)" tag:"group-coaching-app@1.2.0"
 ```
 
 There is no more novel information to add here.
@@ -123,15 +123,15 @@ This case is again similar to an earlier case, here it is the earlier bug fix ca
 ```mermaid
 gitGraph
   checkout main
-  commit id: "feat: a"
-  commit id: "feat: b"
+  commit id:"feat: a"
+  commit id:"feat: b"
 
   checkout main
   branch release/1.1.x order: 0
-  commit id: "chore: bump (1.1.0)" tag: "group-coaching-app@1.1.0"
+  commit id:"chore: bump (1.1.0)" tag:"group-coaching-app@1.1.0"
 
   checkout main
-  commit id: "feat: c"
+  commit id:"feat: c"
 
   checkout release/1.1.x
   branch fix/some-bug-a order: 11
@@ -139,18 +139,18 @@ gitGraph
 
   checkout release/1.1.x
   merge fix/some-bug-a
-  commit id: "chore: bump (1.1.1)" tag: "group-coaching-app@1.1.1"
+  commit id:"chore: bump (1.1.1)" tag:"group-coaching-app@1.1.1"
 
   checkout main
   merge fix/some-bug-a
 
   checkout main
-  commit id: "feat: d"
-  commit id: "feat: e"
+  commit id:"feat: d"
+  commit id:"feat: e"
 
   checkout main
   branch release/1.2.x order: 1
-  commit id: "chore: bump (1.2.0)" tag: "group-coaching-app@1.2.0"
+  commit id:"chore: bump (1.2.0)" tag:"group-coaching-app@1.2.0"
 
   checkout release/1.1.x
   branch fix/some-bug-b order: 11
@@ -160,18 +160,18 @@ gitGraph
 
   checkout release/1.1.x
   merge fix/some-bug-b
-  commit id: "chore: bump (1.1.2)" tag: "group-coaching-app@1.1.2"
+  commit id:"chore: bump (1.1.2)" tag:"group-coaching-app@1.1.2"
 
   checkout release/1.2.x
   merge fix/some-bug-b
-  commit id: "chore: bump (1.2.1)" tag: "group-coaching-app@1.2.1"
+  commit id:"chore: bump (1.2.1)" tag:"group-coaching-app@1.2.1"
 
   checkout main
   merge fix/some-bug-b
 
   checkout main
-  commit id: "feat: f"
-  commit id: "feat: g"
+  commit id:"feat: f"
+  commit id:"feat: g"
 ```
 
 So again, the `fix/` branch is based on the _earliest supported version with the issue_, and when done, is merged into _that same and all following versions affected by that same issue_.
@@ -185,45 +185,45 @@ Let's examine how this would look of we were to fix issues on the `main` branch 
 ```mermaid
 gitGraph
   checkout main
-  commit id: "feat: a"
-  commit id: "feat: b"
+  commit id:"feat: a"
+  commit id:"feat: b"
 
   checkout main
   branch release/1.1.x
-  commit id: "chore: bump (1.1.0)" tag: "group-coaching-app@1.1.0"
+  commit id:"chore: bump (1.1.0)" tag:"group-coaching-app@1.1.0"
 
   checkout main
-  commit id: "feat: c"
+  commit id:"feat: c"
 
   checkout main
-  commit id: "fix: a"
+  commit id:"fix: a"
 
   checkout release/1.1.x
-  cherry-pick id: "fix: a"
-  commit id: "chore: bump (1.1.1)" tag: "group-coaching-app@1.1.1"
+  cherry-pick id:"fix: a"
+  commit id:"chore: bump (1.1.1)" tag:"group-coaching-app@1.1.1"
 
   checkout main
-  commit id: "feat: d"
-  commit id: "feat: e"
+  commit id:"feat: d"
+  commit id:"feat: e"
 
   checkout main
   branch release/1.2.x
-  commit id: "chore: bump (1.2.0)" tag: "group-coaching-app@1.2.0"
+  commit id:"chore: bump (1.2.0)" tag:"group-coaching-app@1.2.0"
 
   checkout main
-  commit id: "fix: b"
+  commit id:"fix: b"
 
   checkout release/1.1.x
-  cherry-pick id: "fix: b"
-  commit id: "chore: bump (1.1.2)" tag: "group-coaching-app@1.1.2"
+  cherry-pick id:"fix: b"
+  commit id:"chore: bump (1.1.2)" tag:"group-coaching-app@1.1.2"
 
   checkout release/1.2.x
-  cherry-pick id: "fix: b"
-  commit id: "chore: bump (1.2.1)" tag: "group-coaching-app@1.2.1"
+  cherry-pick id:"fix: b"
+  commit id:"chore: bump (1.2.1)" tag:"group-coaching-app@1.2.1"
 
   checkout main
-  commit id: "feat: f"
-  commit id: "feat: g"
+  commit id:"feat: f"
+  commit id:"feat: g"
 ```
 
 The most immediate difference is that the `fix/` branches are missing. Consider that the merging would usually occur through squash, as such in the earlier cases the `fix/` branches should now be considered a permanently visible part of the history.
