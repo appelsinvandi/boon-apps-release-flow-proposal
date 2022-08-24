@@ -27,7 +27,7 @@ gitGraph
 
   checkout main
   branch release/1.1.x order: 0
-  commit id:"chore: bump (1.1.0)" tag:"group-coaching-app@1.1.0"
+  commit id:"chore: bump (1.1.0)" tag:"1.1.0"
 
   checkout main
   commit id:"feat: c"
@@ -49,7 +49,7 @@ gitGraph
 
   checkout main
   branch release/1.1.x order: 0
-  commit id:"chore: bump (1.1.0)" tag:"group-coaching-app@1.1.0"
+  commit id:"chore: bump (1.1.0)" tag:"1.1.0"
 
   checkout main
   commit id:"feat: c"
@@ -60,7 +60,7 @@ gitGraph
 
   checkout release/1.1.x
   merge fix/some-bug-a
-  commit id:"chore: bump (1.1.1)" tag:"group-coaching-app@1.1.1"
+  commit id:"chore: bump (1.1.1)" tag:"1.1.1"
 
   checkout main
   merge fix/some-bug-a
@@ -89,7 +89,7 @@ gitGraph
 
   checkout main
   branch release/1.1.x order: 0
-  commit id:"chore: bump (1.1.0)" tag:"group-coaching-app@1.1.0"
+  commit id:"chore: bump (1.1.0)" tag:"1.1.0"
 
   checkout main
   commit id:"feat: c"
@@ -100,7 +100,7 @@ gitGraph
 
   checkout release/1.1.x
   merge fix/some-bug-a
-  commit id:"chore: bump (1.1.1)" tag:"group-coaching-app@1.1.1"
+  commit id:"chore: bump (1.1.1)" tag:"1.1.1"
 
   checkout main
   merge fix/some-bug-a
@@ -111,7 +111,7 @@ gitGraph
 
   checkout main
   branch release/1.2.x order: 1
-  commit id:"chore: bump (1.2.0)" tag:"group-coaching-app@1.2.0"
+  commit id:"chore: bump (1.2.0)" tag:"1.2.0"
 ```
 
 There is no more novel information to add here.
@@ -128,7 +128,7 @@ gitGraph
 
   checkout main
   branch release/1.1.x order: 0
-  commit id:"chore: bump (1.1.0)" tag:"group-coaching-app@1.1.0"
+  commit id:"chore: bump (1.1.0)" tag:"1.1.0"
 
   checkout main
   commit id:"feat: c"
@@ -139,7 +139,7 @@ gitGraph
 
   checkout release/1.1.x
   merge fix/some-bug-a
-  commit id:"chore: bump (1.1.1)" tag:"group-coaching-app@1.1.1"
+  commit id:"chore: bump (1.1.1)" tag:"1.1.1"
 
   checkout main
   merge fix/some-bug-a
@@ -150,7 +150,7 @@ gitGraph
 
   checkout main
   branch release/1.2.x order: 1
-  commit id:"chore: bump (1.2.0)" tag:"group-coaching-app@1.2.0"
+  commit id:"chore: bump (1.2.0)" tag:"1.2.0"
 
   checkout release/1.1.x
   branch fix/some-bug-b order: 11
@@ -160,11 +160,11 @@ gitGraph
 
   checkout release/1.1.x
   merge fix/some-bug-b
-  commit id:"chore: bump (1.1.2)" tag:"group-coaching-app@1.1.2"
+  commit id:"chore: bump (1.1.2)" tag:"1.1.2"
 
   checkout release/1.2.x
   merge fix/some-bug-b
-  commit id:"chore: bump (1.2.1)" tag:"group-coaching-app@1.2.1"
+  commit id:"chore: bump (1.2.1)" tag:"1.2.1"
 
   checkout main
   merge fix/some-bug-b
@@ -189,8 +189,8 @@ gitGraph
   commit id:"feat: b"
 
   checkout main
-  branch release/1.1.x
-  commit id:"chore: bump (1.1.0)" tag:"group-coaching-app@1.1.0"
+  branch release/1.1.x order: 0
+  commit id:"chore: bump (1.1.0)" tag:"1.1.0"
 
   checkout main
   commit id:"feat: c"
@@ -200,26 +200,26 @@ gitGraph
 
   checkout release/1.1.x
   cherry-pick id:"fix: a"
-  commit id:"chore: bump (1.1.1)" tag:"group-coaching-app@1.1.1"
+  commit id:"chore: bump (1.1.1)" tag:"1.1.1"
 
   checkout main
   commit id:"feat: d"
   commit id:"feat: e"
 
   checkout main
-  branch release/1.2.x
-  commit id:"chore: bump (1.2.0)" tag:"group-coaching-app@1.2.0"
+  branch release/1.2.x order: 1
+  commit id:"chore: bump (1.2.0)" tag:"1.2.0"
 
   checkout main
   commit id:"fix: b"
 
   checkout release/1.1.x
   cherry-pick id:"fix: b"
-  commit id:"chore: bump (1.1.2)" tag:"group-coaching-app@1.1.2"
+  commit id:"chore: bump (1.1.2)" tag:"1.1.2"
 
   checkout release/1.2.x
   cherry-pick id:"fix: b"
-  commit id:"chore: bump (1.2.1)" tag:"group-coaching-app@1.2.1"
+  commit id:"chore: bump (1.2.1)" tag:"1.2.1"
 
   checkout main
   commit id:"feat: f"
@@ -227,3 +227,140 @@ gitGraph
 ```
 
 The most immediate difference is that the `fix/` branches are missing. Consider that the merging would usually occur through squash, as such in the earlier cases the `fix/` branches should now be considered a permanently visible part of the history.
+
+Wether or not this is the way to go remains uncertain.
+
+### Case-study: Multiple apps
+
+Alright, so obviously there's more than one app to keep track of. The current branch naming doesn't really allow for this without strong version binding between apps, which is quite unreasonable.
+
+A way to fix this would be to add an extra `folder` to the branch names. Let's take a look at how that would look like, in a scenario without bug-fix noise.
+
+Here is the clean git tree, _without_ any measures to support multiple apps releases.
+
+```mermaid
+gitGraph
+  checkout main
+  commit id:"feat: a"
+  commit id:"feat: b"
+
+  checkout main
+  branch release/1.1.x order: 0
+  commit id:"chore: bump (1.1.0)" tag:"1.1.0"
+
+  checkout main
+  commit id:"feat: c"
+  commit id:"feat: d"
+  commit id:"feat: e"
+
+  checkout main
+  branch release/1.2.x order: 1
+  commit id:"chore: bump (1.2.0)" tag:"1.2.0"
+
+  checkout main
+  commit id:"feat: f"
+  commit id:"feat: g"
+```
+
+And here it is again _with_ support for multiple apps releases.
+
+```mermaid
+gitGraph
+  checkout main
+  commit id:"feat: a"
+  commit id:"feat: b"
+
+  checkout main
+  branch release/group-coaching-app/1.1.x order: 0
+  commit id:"chore: bump (1.1.0)" tag:"group-coaching-app@1.1.0"
+
+  checkout main
+  commit id:"feat: c"
+  commit id:"feat: d"
+
+  branch release/group-coaching-coach-dashboard/1.42.x order: 1
+  commit id:"chore: bump (1.42.0)" tag:"group-coaching-coach-dahsboard@1.42.0"
+
+  checkout main
+  commit id:"feat: e"
+
+  checkout main
+  branch release/group-coaching-app/1.2.x order: 2
+  commit id:"chore: bump (1.2.0)" tag:"group-coaching-app@1.2.0"
+
+  checkout main
+  commit id:"feat: f"
+  commit id:"feat: g"
+```
+
+Now, the `group-coaching-coach-dashboard` app is a web project, so we don't really have to support it beyond 1 minor version, but this structure will enable us to perform rollbacks when necessary, so it still have some value.
+
+With this structure, the CI will know exactly which app to release for each branch.
+
+## Automation
+
+So by now you're likely thinking, "cool, but that doesn't really improve anything, you just made the branching model slightly more strict and added tags..." You would be right to say this, but it's still a pretty big win for automation. Let's look at some potential flows!
+
+### Case-study: A developer creates a release branch, or a new commit is added to an existing release branch
+
+In this case, a developer actively pushes new code to be released imminently. The CI should then take action to prepare for a release.
+
+```mermaid
+graph TD
+  Trig_ReleaseBranchCommit([New commit on a release branch])
+
+  Trig_ReleaseBranchCommit
+    --> CiCreateReleasePr[CI creates/updates a PR based on that branch,<br/>compiling all changesets into a changelog and bumping package versions]
+```
+
+In the above flow, we see that the CI prepares the release in a new PR, which will allow developers review the release before merging the PR.
+
+### Case-study: The developer decides they're happy with the release, and merges the release PR
+
+So the developer looks through the changelog, and makes sure that everything looks as it should. This could also be a good time to make sure the backend is ready for the release. They then decide that it's time to release the new version of the app.
+
+```mermaid
+graph TD
+  Trig_ReleaseBranchCommit([New commit on a release branch])
+  Trig_ReleasePrMerged([A release PR is merged])
+
+  Trig_ReleaseBranchCommit
+    --> CiCreateReleasePr[CI creates/updates a PR based on that branch,<br/>compiling all changesets into a changelog and bumping package versions]
+    --> DevDecidesToMerge[A developer determines the release is ready,<br/>and merges the release PR]
+    -.-> Trig_ReleasePrMerged
+
+  Trig_ReleasePrMerged
+    --> CiCreatesReleaseTag[CI creates release tags for all updated apps,<br />with a changelog for each]
+```
+
+Through merging the CI can create the git state that signifies a release. Potentially triggering more actions to be explored in the next case-study.
+
+### Case-study: A new release tag is created, and the release should be deployed
+
+With the release tag ready and containing all the relevant release info, a new trigger can act on the created tag.
+
+_Note: As I remember, it's technically not possible to act on a tag created by another GitHub Action. But it can all run in the same GitHub Action. For simplicity's sake, I'll refer to it as a trigger on a new release tag._
+
+```mermaid
+graph TD
+  Trig_ReleaseBranchCommit([New commit on a release branch])
+  Trig_ReleasePrMerged([A release PR is merged])
+  Trig_ReleaseBranchTag([New tag based on a release branch commit,<br />is pushed to the remote])
+
+  Trig_ReleaseBranchCommit
+    --> CiCreateReleasePr[CI creates/updates a PR based on that branch,<br/>compiling all changesets into a changelog and bumping package versions]
+    --> DevDecidesToMerge[A developer determines the release is ready,<br/>and merges the release PR]
+    -.-> Trig_ReleasePrMerged
+
+  Trig_ReleasePrMerged
+    --> CiCreatesReleaseTag[CI creates release tags for all updated apps,<br />with a changelog for each]
+    -.-> Trig_ReleaseBranchTag
+
+  Trig_ReleaseBranchTag
+    --> ParseTag[Parse tag information]
+    --> InitDeploy[Initialize deployment on relevant platforms]
+    --> SlackNotify[A notification is sent to slack about the deployment,<br />with the changelog]
+    --> NotionUpdate[CI finds all tickets referenced in the changelog,<br />and moves them to the relevant list on Notion.]
+```
+
+So already the last step contains a lot of automation, and there's really a lot of potential to add automation throughout, especially in regards to notion.
