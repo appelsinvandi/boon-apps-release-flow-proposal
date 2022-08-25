@@ -238,14 +238,14 @@ gitGraph
   commit id:"feat: c"
   commit id:"feat: d"
 
-  branch release/group-coaching-coach-dashboard/1.42.x order: 1
+  branch release/group-coaching-coach-dashboard/1.42.x order: 2
   commit id:"chore: bump (1.42.0)" tag:"group-coaching-coach-dahsboard@1.42.0"
 
   checkout main
   commit id:"feat: e"
 
   checkout main
-  branch release/group-coaching-app/1.2.x order: 2
+  branch release/group-coaching-app/1.2.x order: 1
   commit id:"chore: bump (1.2.0)" tag:"group-coaching-app@1.2.0"
 
   checkout main
