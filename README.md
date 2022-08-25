@@ -182,51 +182,9 @@ This way, we should be able to easily patch old versions that are still adequate
 
 Let's examine how this would look of we were to fix issues on the `main` branch and then use cherry-picking for distribution to `release/` branches.
 
-```mermaid
-gitGraph
-  checkout main
-  commit id:"feat: a"
-  commit id:"feat: b"
+![Git Graph](https://mermaid.ink/svg/pako:eNqlk01OwzAQha9izQqkUhovvQZxAHbIm4k9SazGcTS1pVZV745TtaCUhqaw8_g9z8838h5MsAQKahffGPtGd0KYhsw6pCg8uu54Ebx3UTirNFSEUQnUcF0oB-FqkpKxM41gagk39Fwsi-VWBLbESqwuk5kmMOVsyffiYbCuHjWIiHXWjuFkmZ8tmXletz2NNbKO2j0pzLun3pn15cMbIxTjEYo7RrBTuGk-bvmNu7jRqxzjlnNxDyTKvyIsZyCUY4Tyl1ryf7XkeF3yrnVVU-uqNcACPHF-a_Ov2w82DbEhnzep8tFShamNQ4JDtqbeYqRX62JgUBW2G1oAphjed50BFTnR2fTisGb0X64eu48QzvHhExC8Rks)
 
-  checkout main
-  branch release/1.1.x order: 0
-  commit id:"chore: bump (1.1.0)" tag:"1.1.0"
-
-  checkout main
-  commit id:"feat: c"
-
-  checkout main
-  commit id:"fix: a"
-
-  checkout release/1.1.x
-  cherry-pick id:"fix: a"
-  commit id:"chore: bump (1.1.1)" tag:"1.1.1"
-
-  checkout main
-  commit id:"feat: d"
-  commit id:"feat: e"
-
-  checkout main
-  branch release/1.2.x order: 1
-  commit id:"chore: bump (1.2.0)" tag:"1.2.0"
-
-  checkout main
-  commit id:"fix: b"
-
-  checkout release/1.1.x
-  cherry-pick id:"fix: b"
-  commit id:"chore: bump (1.1.2)" tag:"1.1.2"
-
-  checkout release/1.2.x
-  cherry-pick id:"fix: b"
-  commit id:"chore: bump (1.2.1)" tag:"1.2.1"
-
-  checkout main
-  commit id:"feat: f"
-  commit id:"feat: g"
-```
-
-_Note: It seems github doesn't support this mermaid feature at this time. [Click here for a visual representation of the diagram, of the above fails to render](https://mermaid.ink/svg/pako:eNqlk01OwzAQha9izQqkUhovvQZxAHbIm4k9SazGcTS1pVZV745TtaCUhqaw8_g9z8838h5MsAQKahffGPtGd0KYhsw6pCg8uu54Ebx3UTirNFSEUQnUcF0oB-FqkpKxM41gagk39Fwsi-VWBLbESqwuk5kmMOVsyffiYbCuHjWIiHXWjuFkmZ8tmXletz2NNbKO2j0pzLun3pn15cMbIxTjEYo7RrBTuGk-bvmNu7jRqxzjlnNxDyTKvyIsZyCUY4Tyl1ryf7XkeF3yrnVVU-uqNcACPHF-a_Ov2w82DbEhnzep8tFShamNQ4JDtqbeYqRX62JgUBW2G1oAphjed50BFTnR2fTisGb0X64eu48QzvHhExC8Rks)_
+_Note: GitHub doesn't support cherry-pick in mermaid, so here's an embed. Edit it [here](https://mermaid.live/edit#pako:eNqlk81OwzAMx18l8gmkMdYccwbxANxQLm7ittGapvJSadO0dycdm1DGyjq4xfbfXz8rezDBEiioXXxj7BvdCWEaMuswROHRdUdH8N5F4azSUBFGJVDD9UA5Bq4WKRk70wimlnBDz8WyWG5FYEusxOqymGkCU6o2-F48jNLVowYRsU6xoznZ5udIZp7WbU9rZdJs3FOEeffUO7O-TLyxQpGvUNyxgp3CTfNxy2_cxY1ZZY5bzsU9kij_irCcgVDmCOUvveT_esn8XPKuc1VT56o1wAI8ccq16dftR5mG2JBPl1TpaanCoY1jgUOSDr3FSK_WxcCgIg-0ABxieN915mx_aV4c1oz-7Oyx-wghmRW2Gzp8AooBRbU).
 
 The most immediate difference is that the `fix/` branches are missing. Consider that the merging would usually occur through squash, as such in the earlier cases the `fix/` branches should now be considered a permanently visible part of the history.
 
